@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<h2 class="mb-4">Checkout & UPI Payment</h2>
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center">
+    <h4>Scan to Pay (UPI)</h4>
+    <img src="{% static 'images/qrcode.jpg' %}" alt="Pay with UPI" class="img-thumbnail mb-2" style="width:300px;">
+    <div class="mb-3"><strong>UPI ID:</strong> ramyasowmiya96-1@okicici</div>
+    <a href="upi://pay?pa=ramyasowmiya96-1@okicici&pn=Ramya Sowmiya&am={{ total }}&cu=INR" class="btn btn-success btn-lg mb-3" target="_blank">
+      Pay with UPI App
+    </a>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">I have paid</button>
+    </form>
+    <div class="mt-3 small text-muted">After payment, click above to confirm your order.</div>
+  </div>
+</div>
+{% endblock %}
